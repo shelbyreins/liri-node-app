@@ -1,32 +1,17 @@
 //  require("dotenv").config();
 
- //Reference activity 09
-
 // var keys = require("./keys.js");
 // var Spotify = require('node-spotify-api');
-// var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify(keys.Spotify);
 // spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
 //     if (err) {
 //       return console.log('Error occurred: ' + err);
 //     }
    
-//   console.log(data); 
+//   console.log(data.tracks.items); 
 //   });
-var Spotify = require("node-spotify-api");
- 
-var spotify = new Spotify({
-    id:a9e16adc1e044c569454bec81bd9c13e ,
-    secret: bfcf88ad840f484cad683cbc38758103
-  });
-   console.log(spotify)
-  spotify
-  .search({ type: 'track', query: 'All the Small Things' })
-  .then(function(response) {
-    console.log(response);
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+
+
  
  
 

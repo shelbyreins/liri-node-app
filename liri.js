@@ -1,11 +1,11 @@
 require("dotenv").config();
 
 var axios = require("axios");
-// var nodeArgs = process.argv;
 var options = process.argv[2];
 var userInput = process.argv[3];
 var keys = require("./keys.js");
-var Spotify = require('node-spotify-api');
+var Spotify = require("node-spotify-api");
+var moment = require("moment")
 
 Inputs(options,userInput);
 
@@ -32,10 +32,11 @@ function concert(userInput) {
       var events = response.data
       //console.log(events)
       for (var i = 0; i < events.length; i++) {
+  
         console.log("----- Event -----")
         console.log("Venue: " + events[i].venue.name)
         console.log("Location: " + events[i].venue.city)
-        console.log("Date: " + events[i].datetime)
+        console.log("Date: " +  moment(events[i].datetime).format("MM/DD/YYYY"))
       }
     })
     .catch(function (error) {

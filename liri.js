@@ -5,7 +5,8 @@ var options = process.argv[2];
 var userInput = process.argv[3];
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
-var moment = require("moment")
+var fs = require("fs")
+var moment = require("moment");
 
 Inputs(options,userInput);
 
@@ -19,7 +20,7 @@ function Inputs(options,userInput){
   }else if (options === "do-what-it-says"){
     doWhatItSays()
   } else {
-    console.log("no")
+    console.log("Type in either concert-this, spotify-this, movie-this or do-what-it-says")
   }
 }
 
@@ -30,7 +31,6 @@ function concert(userInput) {
   axios.get(queryUrl).then(
     function (response) {
       var events = response.data
-      //console.log(events)
       for (var i = 0; i < events.length; i++) {
   
         console.log("----- Event -----")
@@ -41,8 +41,6 @@ function concert(userInput) {
     })
     .catch(function (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         console.log("---------------Data---------------");
         console.log(error.response.data);
         console.log("---------------Status---------------");
@@ -50,11 +48,8 @@ function concert(userInput) {
         console.log("---------------Status---------------");
         console.log(error.response.headers);
       } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an object that comes back with details pertaining to the error that occurred.
         console.log(error.request);
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
       console.log(error.config);
@@ -89,13 +84,6 @@ function spotify(userInput) {
 
 }
 
-
-
-
-
-// var axios = require("axios");
-// var nodeArgs = process.argv;
-
 function movie(userInput) {
   if(userInput === undefined){
     userInput = "Mr.Nobody"
@@ -107,20 +95,21 @@ function movie(userInput) {
 
   axios.get(queryUrl).then(
     function (response) {
-      console.log("----- Movie -----")
-      console.log("Title: " + response.data.Title)
-      console.log("Release Year: " + response.data.Year)
-      console.log("IMBD Rating: " + response.data.imdbRating)
-      console.log("Country of Production: " + response.data.Country)
-      console.log("Language: " + response.data.Language)
-      console.log("Plot: " + response.data.Plot)
-      console.log("Actors: " + response.data.Actors)
+      // console.log("---Response---");
+      // console.log(response.data.Ratings);
+      console.log("----- Movie -----");
+      console.log("Title: " + response.data.Title);
+      console.log("Release Year: " + response.data.Year);
+      console.log("IMBD Rating: " + response.data.imdbRating);
+      console.log("Country of Production: " + response.data.Country);
+      console.log("Language: " + response.data.Language);
+      console.log("Plot: " + response.data.Plot);
+      console.log("Actors: " + response.data.Actors);
       //Rotten Tomatoes
+      
     })
     .catch(function (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         console.log("---------------Data---------------");
         console.log(error.response.data);
         console.log("---------------Status---------------");
@@ -128,11 +117,8 @@ function movie(userInput) {
         console.log("---------------Status---------------");
         console.log(error.response.headers);
       } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an object that comes back with details pertaining to the error that occurred.
         console.log(error.request);
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
       console.log(error.config);
@@ -140,7 +126,6 @@ function movie(userInput) {
 }
 
 function doWhatItSays(){
-  var fs = require("fs")
   fs.readFile("random.txt","utf-8", function(err, data){
     if(err){
       return console.log(err)

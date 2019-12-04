@@ -48,6 +48,7 @@ function concert(userInput) {
         console.log("Venue: " + events[i].venue.name)
         console.log("Location: " + events[i].venue.city)
         console.log("Date: " + moment(events[i].datetime).format("MM/DD/YYYY"))
+        console.log("---------------")
       }
     })
     .catch(function (error) {
@@ -84,6 +85,7 @@ function spotify(userInput) {
       console.log("Artist(s): " + song[i].artists[0].name);
       console.log("Album: " + song[i].album.name);
       console.log("Preview Link: " + song[i].preview_url);
+      console.log("---------------")
 
     }
 
@@ -103,16 +105,27 @@ function movie(userInput) {
 
   axios.get(queryUrl).then(
     function (response) {
+      // console.log(response.data.Ratings)
       console.log("----- Movie -----");
       console.log("Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
-      console.log("IMBD Rating: " + response.data.imdbRating);
+      console.log("IMBD Rating: " + response.data.imdbRating + "/10");
       console.log("Country of Production: " + response.data.Country);
       console.log("Language: " + response.data.Language);
       console.log("Plot: " + response.data.Plot);
       console.log("Actors: " + response.data.Actors);
-      //Rotten Tomatoes
-
+      console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value)
+      console.log("---------------")
+    //   if (!err && response.StatusCode === 200){
+    //   var rating = JSON.parse(body).Ratings;
+    //   for (var i = 0;i < rating.length; i++){
+    //   if(rating[i].Source == "Rotten Tomatoes"){
+    //   console.log("Rotten Tomatoes Rating: " + rating[i].Value)
+    //   } else{
+    //     console.log("Rotten Tomatoes Rating: N/A")
+    //   }
+    // }
+    //   }
     })
     .catch(function (error) {
       if (error.response) {
@@ -130,6 +143,7 @@ function movie(userInput) {
       console.log(error.config);
     });
 }
+
 
 function doWhatItSays() {
   fs.readFile("random.txt", "utf-8", function (err, data) {

@@ -3,8 +3,8 @@
 # ABOUT THE APP
 
 
-Liri is .... command line application (CLI APP)....
-`commands` are:
+Liri is a Language Interpretation and Recognition Interface command line node app (CLI). Liri takes in parameters and gives back data. In conjunction with the parameters, the user has four commands to chose from.
+The `commands` are:
 
 * `concert-this`
 * `spotify-this-song`
@@ -18,7 +18,7 @@ Liri is .... command line application (CLI APP)....
 ### Installations
 1. Clone Github Repository 
 2. Using terminal, navigate to the the liri-node-app folder
-3. Create a file .env
+3. Create a file **.env**
 4. Then create a Spotify ID using https://developer.spotify.com/dashboard/
 5. Add your spotify ID to the .env file and save
 
@@ -37,20 +37,39 @@ Liri is .... command line application (CLI APP)....
 4. Run one of these commands:
 
     **Example 1:** Run the `concert-this` command
-        > `node liri.js concert-this <artist/band name here>`
-    <!-- Input into terminal
-    GIF of results
-    Explaintion of output -->
+
+        `node liri.js concert-this <artist/band name here>`
+
+    <img src = "images/concer-this.png" width="400px"/>
+   
+     Output: Displays a list of upcoming events the artist/ band will perform. Including venue, location and date(MM/DD/YYYY). 
+     Expect there to be one, multiple or no results at all. 
 
 
     **Example 2:** Run the `spotify-this-song` command
-        > `node liri.js spotify-this-song <song name here>`
+
+        `node liri.js spotify-this-song <song name here>`
+        
+
+     Output: Displays information about the song name. Expect there to be multiple results varying different artists. There is be a preview link for each associated song. 
+
 
     **Example 3:** Run the `movie-this` command
-        > `node liri.js movie-this <movie name here>`
+
+        `node liri.js movie-this <movie name here>`
+
+    <img src = "images/movie-this.png" width="400px"/>
+     
+     Output: Displays information associated with the movie name. Including title. release date,rating(s), country of production, language, plot and actors. 
+
 
     **Example 4:** Run the `do-what-it-says` command
-        > `node liri.js do-what-it-says`
+
+        `node liri.js do-what-it-says`
+
+    <img src = "images/do-what-it-says.png" width="400px"/>
+
+<hr>
 
 # TECHNOLOGIES USED
 * Javascript

@@ -20,12 +20,15 @@ function Inputs(options, userInput) {
 
     case "spotify-this-song":
       spotify(userInput);
+      break;
 
     case "movie-this":
       movie(userInput);
+      break;
 
     case "do-what-it-says":
-      doWhatItSays(userInputs);
+      doWhatItSays();
+      break;
     
     default:
     console.log("Use one of these commands concert-this, spotify-this, movie-this or do-what-it-says");
@@ -66,7 +69,8 @@ function concert(userInput) {
 
 function spotify(userInput) {
   if (userInput === undefined) {
-    userInput = "The Sign"
+    userInput = "The Sign, Ace of Base"
+    console.log("Song: 'The Sign' Artist: Ace of Base");
   }
   var spotify = new Spotify(keys.Spotify);
   spotify.search({ type: 'track', query: userInput }, function (err, data) {

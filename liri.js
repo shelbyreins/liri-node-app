@@ -1,26 +1,34 @@
 require("dotenv").config();
 
-var axios = require("axios");
 var options = process.argv[2];
 var userInput = process.argv[3];
+
 var keys = require("./keys.js");
+
+var axios = require("axios");
 var Spotify = require("node-spotify-api");
 var fs = require("fs")
 var moment = require("moment");
 
-Inputs(options,userInput);
+Inputs(options, userInput);
 
-function Inputs(options,userInput){
-  if (options === "concert-this") {
-    concert(userInput)
-  } else if (options === "spotify-this-song") {
-    spotify(userInput)
-  } else if (options === "movie-this") {
-    movie(userInput)
-  }else if (options === "do-what-it-says"){
-    doWhatItSays()
-  } else {
-    console.log("Type in either concert-this, spotify-this, movie-this or do-what-it-says")
+function Inputs(options, userInput) {
+  switch (options) {
+    case "concert-this":
+      concert(userInput);
+      break;
+
+    case "spotify-this-song":
+      spotify(userInput);
+
+    case "movie-this":
+      movie(userInput);
+
+    case "do-what-it-says":
+      doWhatItSays(userInputs);
+    
+    default:
+    console.log("Use one of these commands concert-this, spotify-this, movie-this or do-what-it-says");
   }
 }
 
@@ -32,11 +40,11 @@ function concert(userInput) {
     function (response) {
       var events = response.data
       for (var i = 0; i < events.length; i++) {
-  
+
         console.log("----- Event -----")
         console.log("Venue: " + events[i].venue.name)
         console.log("Location: " + events[i].venue.city)
-        console.log("Date: " +  moment(events[i].datetime).format("MM/DD/YYYY"))
+        console.log("Date: " + moment(events[i].datetime).format("MM/DD/YYYY"))
       }
     })
     .catch(function (error) {
@@ -56,12 +64,9 @@ function concert(userInput) {
     });
 }
 
-
-
-
 function spotify(userInput) {
-  if(userInput === undefined){
-    userInput = "The Sign" 
+  if (userInput === undefined) {
+    userInput = "The Sign"
   }
   var spotify = new Spotify(keys.Spotify);
   spotify.search({ type: 'track', query: userInput }, function (err, data) {
@@ -69,7 +74,6 @@ function spotify(userInput) {
       return console.log('Error occurred: ' + err);
     }
     var song = data.tracks.items;
-    // console.log(song)
     for (var i = 0; i < song.length; i++) {
       console.log("----- Song -----")
       console.log("Song Name: " + song[i].name);
@@ -85,7 +89,7 @@ function spotify(userInput) {
 }
 
 function movie(userInput) {
-  if(userInput === undefined){
+  if (userInput === undefined) {
     userInput = "Mr.Nobody"
     console.log("-----------")
     console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
@@ -95,8 +99,6 @@ function movie(userInput) {
 
   axios.get(queryUrl).then(
     function (response) {
-      // console.log("---Response---");
-      // console.log(response.data.Ratings);
       console.log("----- Movie -----");
       console.log("Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
@@ -106,7 +108,7 @@ function movie(userInput) {
       console.log("Plot: " + response.data.Plot);
       console.log("Actors: " + response.data.Actors);
       //Rotten Tomatoes
-      
+
     })
     .catch(function (error) {
       if (error.response) {
@@ -125,12 +127,12 @@ function movie(userInput) {
     });
 }
 
-function doWhatItSays(){
-  fs.readFile("random.txt","utf-8", function(err, data){
-    if(err){
+function doWhatItSays() {
+  fs.readFile("random.txt", "utf-8", function (err, data) {
+    if (err) {
       return console.log(err)
     }
     var dataArr = data.split(",");
-      Inputs(dataArr[0], dataArr[1]);
+    Inputs(dataArr[0], dataArr[1]);
   })
 }

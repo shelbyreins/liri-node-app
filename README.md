@@ -15,7 +15,7 @@ The `commands` are:
 
 # HOW TO USE LIRI
 
-### Installations
+### **Installations**
 1. Clone Github Repository 
 2. Using terminal, navigate to the the liri-node-app folder
 3. Create a file **.env**
@@ -30,7 +30,7 @@ The `commands` are:
 
     ```
 
-#### **Step-by-step Instructions**
+### **Step-by-step Instructions**
 
 1. Open your Terminal/Gitbash
 2. Navigate to the directory that containes the file liri.js
@@ -73,11 +73,11 @@ The `commands` are:
     Output: The command do-what-it-says does not take in a parameter, instead it contains a function that reads data from a text file and displays it to the screen. The text file can be updated at anytime. 
     For this example the data used was: 
 
-        spotify-this-song,"I Want it That Way"
+    `spotify-this-song,"I Want it That Way"`
 
 ---
 
-#### LIRI BOT LIVE
+### **LIRI BOT LIVE**
 
 <hr>
 

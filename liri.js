@@ -44,11 +44,11 @@ function concert(userInput) {
       var events = response.data
       for (var i = 0; i < events.length; i++) {
 
-        console.log("----- Event -----")
-        console.log("Venue: " + events[i].venue.name)
-        console.log("Location: " + events[i].venue.city)
-        console.log("Date: " + moment(events[i].datetime).format("MM/DD/YYYY"))
-        console.log("---------------")
+        console.log("----- Event -----");
+        console.log("Venue: " + events[i].venue.name);
+        console.log("Location: " + events[i].venue.city);
+        console.log("Date: " + moment(events[i].datetime).format("MM/DD/YYYY"));
+        console.log("---------------");
       }
     })
     .catch(function (error) {
@@ -105,7 +105,6 @@ function movie(userInput) {
 
   axios.get(queryUrl).then(
     function (response) {
-      // console.log(response.data.Ratings)
       console.log("----- Movie -----");
       console.log("Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
@@ -114,18 +113,12 @@ function movie(userInput) {
       console.log("Language: " + response.data.Language);
       console.log("Plot: " + response.data.Plot);
       console.log("Actors: " + response.data.Actors);
-      console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value)
+      if(response.data.Ratings && response.data.Ratings[1]){
+       console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value)
+    }else {
+       console.log("Rotten Tomatoes Rating: N/A")
+    }
       console.log("---------------")
-    //   if (!err && response.StatusCode === 200){
-    //   var rating = JSON.parse(body).Ratings;
-    //   for (var i = 0;i < rating.length; i++){
-    //   if(rating[i].Source == "Rotten Tomatoes"){
-    //   console.log("Rotten Tomatoes Rating: " + rating[i].Value)
-    //   } else{
-    //     console.log("Rotten Tomatoes Rating: N/A")
-    //   }
-    // }
-    //   }
     })
     .catch(function (error) {
       if (error.response) {

@@ -79,6 +79,8 @@ The `commands` are:
 
 ### **LIRI BOT LIVE**
 
+<img src = "images/liri.mov" width="600px"/>
+
 <hr>
 
 # TECHNOLOGIES USED

@@ -79,6 +79,7 @@ function spotify(userInput) {
       return console.log('Error occurred: ' + err);
     }
     var song = data.tracks.items;
+    console.log(data.tracks)
     for (var i = 0; i < song.length; i++) {
       console.log("----- Song -----")
       console.log("Song Name: " + song[i].name);

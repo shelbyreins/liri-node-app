@@ -77,9 +77,9 @@ The `commands` are:
 
 ---
 
-<!-- ### **LIRI BOT LIVE**
+### **LIRI BOT LIVE**
 
-<img src = "images/" width="600px"/> -->
+<img src = "images/liri.gif" width="600px"/>
 
 <hr>
 
